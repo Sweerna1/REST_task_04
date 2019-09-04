@@ -1,9 +1,14 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView, DestroyAPIView, CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView, DestroyAPIView, CreateAPIView
 from datetime import datetime
 
 from .models import Flight, Booking
-from .serializers import FlightSerializer, BookingSerializer, BookingDetailsSerializer, UpdateBookingSerializer
+from .serializers import (
+	FlightSerializer, BookingSerializer, 
+	BookingDetailsSerializer, UpdateBookingSerializer, RegisterSerializer)
 
+
+class Register(CreateAPIView):
+	serializer_class = RegisterSerializer
 
 class FlightsList(ListAPIView):
 	queryset = Flight.objects.all()
